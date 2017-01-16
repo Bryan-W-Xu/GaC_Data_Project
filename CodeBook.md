@@ -42,7 +42,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 ```
 
 ```
-## [1] "Download time: 2017-01-15 22:31:55"
+## [1] "Download time: 2017-01-16 00:06:28"
 ```
 
 ```r
@@ -56,34 +56,38 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 ##  [3] "CodeBook.Rmd"                                                
 ##  [4] "Dataset.zip"                                                 
 ##  [5] "new_dataset.txt"                                             
-##  [6] "UCI HAR Dataset/activity_labels.txt"                         
-##  [7] "UCI HAR Dataset/features.txt"                                
-##  [8] "UCI HAR Dataset/features_info.txt"                           
-##  [9] "UCI HAR Dataset/README.txt"                                  
-## [10] "UCI HAR Dataset/test/Inertial Signals/body_acc_x_test.txt"   
-## [11] "UCI HAR Dataset/test/Inertial Signals/body_acc_y_test.txt"   
-## [12] "UCI HAR Dataset/test/Inertial Signals/body_acc_z_test.txt"   
-## [13] "UCI HAR Dataset/test/Inertial Signals/body_gyro_x_test.txt"  
-## [14] "UCI HAR Dataset/test/Inertial Signals/body_gyro_y_test.txt"  
-## [15] "UCI HAR Dataset/test/Inertial Signals/body_gyro_z_test.txt"  
-## [16] "UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt"  
-## [17] "UCI HAR Dataset/test/Inertial Signals/total_acc_y_test.txt"  
-## [18] "UCI HAR Dataset/test/Inertial Signals/total_acc_z_test.txt"  
-## [19] "UCI HAR Dataset/test/subject_test.txt"                       
-## [20] "UCI HAR Dataset/test/X_test.txt"                             
-## [21] "UCI HAR Dataset/test/y_test.txt"                             
-## [22] "UCI HAR Dataset/train/Inertial Signals/body_acc_x_train.txt" 
-## [23] "UCI HAR Dataset/train/Inertial Signals/body_acc_y_train.txt" 
-## [24] "UCI HAR Dataset/train/Inertial Signals/body_acc_z_train.txt" 
-## [25] "UCI HAR Dataset/train/Inertial Signals/body_gyro_x_train.txt"
-## [26] "UCI HAR Dataset/train/Inertial Signals/body_gyro_y_train.txt"
-## [27] "UCI HAR Dataset/train/Inertial Signals/body_gyro_z_train.txt"
-## [28] "UCI HAR Dataset/train/Inertial Signals/total_acc_x_train.txt"
-## [29] "UCI HAR Dataset/train/Inertial Signals/total_acc_y_train.txt"
-## [30] "UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt"
-## [31] "UCI HAR Dataset/train/subject_train.txt"                     
-## [32] "UCI HAR Dataset/train/X_train.txt"                           
-## [33] "UCI HAR Dataset/train/y_train.txt"
+##  [6] "README.html"                                                 
+##  [7] "README.md"                                                   
+##  [8] "README.Rmd"                                                  
+##  [9] "run_analysis.R"                                              
+## [10] "UCI HAR Dataset/activity_labels.txt"                         
+## [11] "UCI HAR Dataset/features.txt"                                
+## [12] "UCI HAR Dataset/features_info.txt"                           
+## [13] "UCI HAR Dataset/README.txt"                                  
+## [14] "UCI HAR Dataset/test/Inertial Signals/body_acc_x_test.txt"   
+## [15] "UCI HAR Dataset/test/Inertial Signals/body_acc_y_test.txt"   
+## [16] "UCI HAR Dataset/test/Inertial Signals/body_acc_z_test.txt"   
+## [17] "UCI HAR Dataset/test/Inertial Signals/body_gyro_x_test.txt"  
+## [18] "UCI HAR Dataset/test/Inertial Signals/body_gyro_y_test.txt"  
+## [19] "UCI HAR Dataset/test/Inertial Signals/body_gyro_z_test.txt"  
+## [20] "UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt"  
+## [21] "UCI HAR Dataset/test/Inertial Signals/total_acc_y_test.txt"  
+## [22] "UCI HAR Dataset/test/Inertial Signals/total_acc_z_test.txt"  
+## [23] "UCI HAR Dataset/test/subject_test.txt"                       
+## [24] "UCI HAR Dataset/test/X_test.txt"                             
+## [25] "UCI HAR Dataset/test/y_test.txt"                             
+## [26] "UCI HAR Dataset/train/Inertial Signals/body_acc_x_train.txt" 
+## [27] "UCI HAR Dataset/train/Inertial Signals/body_acc_y_train.txt" 
+## [28] "UCI HAR Dataset/train/Inertial Signals/body_acc_z_train.txt" 
+## [29] "UCI HAR Dataset/train/Inertial Signals/body_gyro_x_train.txt"
+## [30] "UCI HAR Dataset/train/Inertial Signals/body_gyro_y_train.txt"
+## [31] "UCI HAR Dataset/train/Inertial Signals/body_gyro_z_train.txt"
+## [32] "UCI HAR Dataset/train/Inertial Signals/total_acc_x_train.txt"
+## [33] "UCI HAR Dataset/train/Inertial Signals/total_acc_y_train.txt"
+## [34] "UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt"
+## [35] "UCI HAR Dataset/train/subject_train.txt"                     
+## [36] "UCI HAR Dataset/train/X_train.txt"                           
+## [37] "UCI HAR Dataset/train/y_train.txt"
 ```
 
 1. Read the test and train data sets and combine them into "df"
@@ -139,9 +143,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 ```r
   features <- read.table("UCI HAR Dataset/features.txt")
-  cols <- grep("mean\\(", features$V2)
-  cols <- append(cols, grep("std\\(", features$V2))
-  cols <- sort(cols)
+  cols <- grep("mean\\(|std\\(", features$V2)
   
   df_mean_std <- select(df, cols)
 ```

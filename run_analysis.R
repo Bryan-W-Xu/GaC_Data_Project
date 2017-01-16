@@ -30,9 +30,7 @@ df <- rbind(df_test, df_train)
 library(dplyr)
 
 features <- read.table("UCI HAR Dataset/features.txt")
-cols <- grep("mean\\(", features$V2)
-cols <- append(cols, grep("std\\(", features$V2))
-cols <- sort(cols)
+cols <- grep("mean\\(|std\\(", features$V2)
 
 df_mean_std <- select(df, cols)
 
